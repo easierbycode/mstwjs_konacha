@@ -5,8 +5,10 @@ describe "Trip detail toggler", ->
 
   describe "clicking a show link", ->
   
-    it "shows the trip description", ->
-      $('body').html(JST['templates/one_index_trip'])
+    beforeEach ->
+      loadFixtures("one_index_trip.html")
       init()
       $('.detail_toggle').click()
-      expect($('.detail')).not.to.have.class('hidden')
+  
+    it "shows the trip description", ->
+      expect($('.detail')).not.toHaveClass('hidden')
