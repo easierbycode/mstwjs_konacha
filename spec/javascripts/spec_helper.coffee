@@ -7,7 +7,8 @@ window.loadFixtures = (filename) ->
   $('body').html(JST["templates/#{filename}"])
 
 chai.use (_chai, utils) ->
-  utils.addMethod chai.Assertion.prototype, 'toHaveClass', (str) ->
-    assertHasClass = new chai.Assertion
-    utils.transferFlags(@, assertHasClass)
-    assertHasClass.to.have.class(str)
+  for property in ["Attr", "Class", "Css", "Data", "Html", "Id", "Length", "Prop", "Text", "Value"]
+    utils.addMethod chai.Assertion.prototype, "toHave#{property}", (val) ->
+      assertHasProperty = new chai.Assertion
+      utils.transferFlags(@, assertHasProperty)
+      assertHasProperty.to.have["#{property.toLowerCase()}"](val)
