@@ -11,10 +11,11 @@ describe "Trip detail toggler", ->
       $('.detail_toggle').click()
   
     it "shows the trip description", ->
-      expect($('.detail')).not.toHaveClass('hidden')
+      expect($('.detail')).not.to.have.class('hidden')
       
     it 'changes the link action to "Hide"', ->
-      expect($('.detail_toggle')).toHaveText('Hide Details')
+      console.log $('.detail_toggle').text()
+      expect($('.detail_toggle')).to.have.text('Hide Details')
 
     describe 'clicking the link again', ->
 
@@ -22,7 +23,7 @@ describe "Trip detail toggler", ->
         $('.detail_toggle').click()
 
       it 'hides the description', ->
-        expect($('.detail')).toHaveClass('hidden')
+        expect($('.detail')).to.have.class('hidden')
 
       it 'changes the link action back to "show"', ->
-        expect($('.detail_toggle')).toHaveText('Show Details')
+        expect($('.detail_toggle')).to.have.text('Show Details')
